@@ -12,7 +12,15 @@ app.use(volleyball)
 
 //this is where some things should go
 
+app.use('/students', require('./api/students'));
 
+app.use('/campuses', require('./api/campuses'));
+
+app.use((req, res, next) => {
+  const err = new Error('API route not found!')
+  err.status = 404
+  next(err)
+})
 
 
 
