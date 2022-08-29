@@ -1,16 +1,67 @@
 import React from "react";
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
+import Student from "../students/Student";
+import campuses from "./index";
 
 function CampusPage(){
     const params = useParams();
-    const campuses = useSelector(state=>state.campuses.data);
+   const campuses = [
+  {
+        id:1,
+        name:"Muppets University",
+        imgUrl: 'https://image-cdn.neatoshop.com/styleimg/37466/none/kiwigreen/default/269117-20.jpg',
+        address: '123 Sesame Street',
+        description: 'A place of learning, a place of knowledge'
+         },
+    {
+        id:2,
+        name:"Sith Academy",
+        imgUrl: 'https://i.kym-cdn.com/photos/images/original/000/559/643/1b7.png',
+        address: '666 Koriban Drive',
+        description: 'Through passion, I gain strength. Through strength, I gain power. Through power, I gain victory. Through victory, my chains are broken.'
+         },
+];
+
+   const students = [
+    {
+            id:1,
+            fname:"Kermit",
+            lname:"Frog",
+            email: 'kfrog@sesamestreet.com',
+            imgUrl: 'https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg', 
+            gpa: 4.0,
+            campusId: 1
+        },
+        {
+            id:2,
+            fname:"Darth",
+            lname:"Vader",
+            email: 'dvader@killedhiswife.com',
+            imgUrl: 'https://as2.ftcdn.net/v2/jpg/03/13/36/79/1000_F_313367965_7B8Y7JrJ3JAG6zdjw51L59kVQZMlA9K7.jpg', 
+            gpa: 4.0,
+            campusId: 2
+        }];
     const campus = campuses.find(itm => Number(params.id)===itm.id);
 
+    const attendingStudents =[];
+
+    students.map(student=>{
+        if(student.campusId == campus.id){
+            attendingStudents.push(student)
+        }
+    })
+
     return(
-        <div>
-            <h1>{campus.name}</h1>
+        <div className='singleCampus'>
             <img src={campus.imgUrl}/>
+            <h1>{campus.name}</h1>
+            <h3>ADDRESS:<br/><br/>{campus.address}</h3>
+            <p>MOTTO:<br/><br/>{campus.description}</p>
+            <h2>::Attending Students::</h2>
+            {attendingStudents.map(student=>
+            <Student key={students.id} data={student}/>)
+            }
         </div>
     )
 }

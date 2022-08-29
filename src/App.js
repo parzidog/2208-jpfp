@@ -14,8 +14,13 @@ function App(){
         <div className="App">
             <Navigation/>
             <Routes>
-                <Route path={"students"} element={<Students/>}/>
-                <Route path={"campuses"} element={<Campuses/>}/>
+                <Route index element={<Students/>}/>
+                <Route path={"students"} element={<Students/>}>
+                    {/* <Route path={":id"} element={<StudentPage/>}/> */}
+                </Route>
+                <Route path={"campuses"} element={<Campuses/>}>
+                    {/* <Route path={":id"} element={<CampusPage/>}/> */}
+                </Route>
                 <Route path={"students/:id"} element={<StudentPage/>}/>
                 <Route path={"campuses/:id"} element={<CampusPage/>}/>
             </Routes>

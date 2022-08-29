@@ -12,15 +12,29 @@ app.use(volleyball)
 
 //this is where some things should go
 
-app.use('/students', require('./api/students'));
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 
-app.use('/campuses', require('./api/campuses'));
+app.use('/api', require('./api'));
 
-app.use((req, res, next) => {
-  const err = new Error('API route not found!')
-  err.status = 404
-  next(err)
+app.get('/', (req, res, next) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'))
 })
+
+app.get('/students', (req, res, next)=> {
+  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'))
+})
+
+app.get('/campuses', (req, res, next)=> {
+  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'))
+})
+
+// Error-handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(err.status || 500).send(err.message || "Internal server error");
+});
+
 
 
 

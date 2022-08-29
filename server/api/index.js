@@ -2,7 +2,7 @@
 const router = require('express').Router();
 
 router.get('/', function (req,res){
-    res.redirect('/students/')
+    res.sendFile(path.join(__dirname, '/index.html'))
 })
 
 router.use('/students', require('./students'));
