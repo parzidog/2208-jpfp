@@ -13,6 +13,7 @@ export const fetchCampuses = () => {
   return async (dispatch) => {
     try {
       const {data} = await axios.get('/api/campuses')
+      console.log(data)
       dispatch(setCampuses(data))
     } catch(err) {
       console.log(err)

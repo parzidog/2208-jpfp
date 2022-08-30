@@ -2514,6 +2514,140 @@ function App() {
 
 /***/ }),
 
+/***/ "./src/components/campuses/AddCampus.js":
+/*!**********************************************!*\
+  !*** ./src/components/campuses/AddCampus.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var _dbList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../dbList */ "./src/components/dbList.js");
+/* harmony import */ var _Campus__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Campus */ "./src/components/campuses/Campus.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+var Form = function Form() {
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState({
+    id: "",
+    name: "",
+    imgUrl: '',
+    address: '',
+    description: ''
+  }),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      form = _React$useState2[0],
+      setForm = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default().useState(_dbList__WEBPACK_IMPORTED_MODULE_2__["default"].campuses),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      campuses = _React$useState4[0],
+      setCampuses = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default().useState([]),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      list = _React$useState6[0],
+      setList = _React$useState6[1];
+
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+    setList(campuses);
+  });
+
+  var handleChange = function handleChange(prop) {
+    return function (event) {
+      setForm(_objectSpread(_objectSpread({}, form), {}, _defineProperty({}, prop, event.target.value)));
+    };
+  };
+
+  var handleSubmit = function handleSubmit(event) {
+    event.preventDefault();
+    setCampuses([].concat(_toConsumableArray(campuses), [form]));
+    setForm({
+      id: "",
+      name: "",
+      imgUrl: '',
+      address: '',
+      description: ''
+    });
+  };
+
+  var itemsEle = list.map(function (itm, idx) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      key: idx
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Campus__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      data: itm
+    }));
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "allCampuses"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "allCampuses"
+  }, itemsEle), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "::ADD A NEW CAMPUS::"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+    onSubmit: handleSubmit
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    value: form.name,
+    onChange: handleChange("name"),
+    placeholder: 'Campus Name'
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    value: form.imgUrl,
+    onChange: handleChange("imgUrl"),
+    placeholder: 'Image URL'
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    value: form.address,
+    onChange: handleChange("address"),
+    placeholder: 'Address'
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "description",
+    value: form.description,
+    onChange: handleChange("description"),
+    placeholder: 'Description'
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "submit",
+    value: 'Submit'
+  })));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Form);
+
+/***/ }),
+
 /***/ "./src/components/campuses/Campus.js":
 /*!*******************************************!*\
   !*** ./src/components/campuses/Campus.js ***!
@@ -2567,7 +2701,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _students_Student__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../students/Student */ "./src/components/students/Student.js");
-/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index */ "./src/components/campuses/index.js");
+/* harmony import */ var _dbList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dbList */ "./src/components/dbList.js");
 
 
 
@@ -2576,36 +2710,8 @@ __webpack_require__.r(__webpack_exports__);
 
 function CampusPage() {
   var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useParams)();
-  var campuses = [{
-    id: 1,
-    name: "Muppets University",
-    imgUrl: 'https://image-cdn.neatoshop.com/styleimg/37466/none/kiwigreen/default/269117-20.jpg',
-    address: '123 Sesame Street',
-    description: 'A place of learning, a place of knowledge'
-  }, {
-    id: 2,
-    name: "Sith Academy",
-    imgUrl: 'https://i.kym-cdn.com/photos/images/original/000/559/643/1b7.png',
-    address: '666 Koriban Drive',
-    description: 'Through passion, I gain strength. Through strength, I gain power. Through power, I gain victory. Through victory, my chains are broken.'
-  }];
-  var students = [{
-    id: 1,
-    fname: "Kermit",
-    lname: "Frog",
-    email: 'kfrog@sesamestreet.com',
-    imgUrl: 'https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg',
-    gpa: 4.0,
-    campusId: 1
-  }, {
-    id: 2,
-    fname: "Darth",
-    lname: "Vader",
-    email: 'dvader@killedhiswife.com',
-    imgUrl: 'https://as2.ftcdn.net/v2/jpg/03/13/36/79/1000_F_313367965_7B8Y7JrJ3JAG6zdjw51L59kVQZMlA9K7.jpg',
-    gpa: 4.0,
-    campusId: 2
-  }];
+  var campuses = _dbList__WEBPACK_IMPORTED_MODULE_3__["default"].campuses;
+  var students = _dbList__WEBPACK_IMPORTED_MODULE_3__["default"].students;
   var campus = campuses.find(function (itm) {
     return Number(params.id) === itm.id;
   });
@@ -2619,12 +2725,14 @@ function CampusPage() {
     className: "singleCampus"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: campus.imgUrl
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, campus.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "ADDRESS:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), campus.address), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "MOTTO:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), campus.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "::Attending Students::"), attendingStudents.map(function (student) {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, campus.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "ADDRESS:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), campus.address), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "MOTTO:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), campus.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "::Attending Students::"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "attendingStudents"
+  }, attendingStudents.map(function (student) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_students_Student__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      key: students.id,
+      key: student.id,
       data: student
     });
-  }));
+  })));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CampusPage);
@@ -2646,12 +2754,88 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Campus__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Campus */ "./src/components/campuses/Campus.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _dbList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dbList */ "./src/components/dbList.js");
+/* harmony import */ var _AddCampus__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AddCampus */ "./src/components/campuses/AddCampus.js");
+
+
 
 
 
 
 function campuses() {
-  var campuses = [{
+  var campuses = _dbList__WEBPACK_IMPORTED_MODULE_3__["default"].campuses;
+  var students = _dbList__WEBPACK_IMPORTED_MODULE_3__["default"].students;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "allCampuses"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AddCampus__WEBPACK_IMPORTED_MODULE_4__["default"], null));
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (campuses);
+
+/***/ }),
+
+/***/ "./src/components/dbList.js":
+/*!**********************************!*\
+  !*** ./src/components/dbList.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var List = {
+  students: [{
+    id: 1,
+    fname: "Kermit",
+    lname: "Frog",
+    email: 'kfrog@sesamestreet.com',
+    imgUrl: 'https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg',
+    gpa: 4.0,
+    campusId: 1
+  }, {
+    id: 2,
+    fname: "Darth",
+    lname: "Vader",
+    email: 'dvader@killedhiswife.com',
+    imgUrl: 'https://as2.ftcdn.net/v2/jpg/03/13/36/79/1000_F_313367965_7B8Y7JrJ3JAG6zdjw51L59kVQZMlA9K7.jpg',
+    gpa: 4.0,
+    campusId: 2
+  }, {
+    id: 3,
+    fname: "Piggy",
+    lname: "Lee",
+    email: 'plee@muppetsrule.com',
+    imgUrl: 'https://upload.wikimedia.org/wikipedia/en/2/22/MissPiggy.jpg',
+    gpa: 3.0,
+    campusId: 1
+  }, {
+    id: 4,
+    fname: "Darth",
+    lname: "Revan",
+    email: 'drevan@pickaside.com',
+    imgUrl: 'https://wegotthiscovered.com/wp-content/uploads/2021/04/161834009578318259-19-640x321.jpeg',
+    gpa: 2.7,
+    campusId: 2
+  }, {
+    id: 5,
+    fname: "Boba",
+    lname: "Fett",
+    email: 'bfett@misseshisdaddy.com',
+    imgUrl: 'https://cdn.theatlantic.com/thumbor/bqAmG_kEL3yosFhPGILd9ZqgJAg=/0x0:2500x1406/976x549/media/img/mt/2022/01/06_boba_fett_trailer_stills_uhd_t_r709_211010_8f3ddb41/original.jpg',
+    gpa: 3.8,
+    campusId: 2
+  }, {
+    id: 6,
+    fname: "Fozzie",
+    lname: "Bear",
+    email: 'fbear@frankoz.com',
+    imgUrl: 'https://d23.com/app/uploads/2020/08/1180w-600h_081420_fozzie-national-tell-a-joke-day_3-780x440.jpg',
+    gpa: 2.9,
+    campusId: 1
+  }],
+  campuses: [{
     id: 1,
     name: "Muppets University",
     imgUrl: 'https://image-cdn.neatoshop.com/styleimg/37466/none/kiwigreen/default/269117-20.jpg',
@@ -2663,18 +2847,9 @@ function campuses() {
     imgUrl: 'https://i.kym-cdn.com/photos/images/original/000/559/643/1b7.png',
     address: '666 Koriban Drive',
     description: 'Through passion, I gain strength. Through strength, I gain power. Through power, I gain victory. Through victory, my chains are broken.'
-  }];
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "allCampuses"
-  }, campuses.map(function (itm) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Campus__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      key: itm.id,
-      data: itm
-    });
-  }));
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (campuses);
+  }]
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (List);
 
 /***/ }),
 
@@ -2715,6 +2890,221 @@ function Navigation() {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Navigation);
+
+/***/ }),
+
+/***/ "./src/components/students/AddStudent.js":
+/*!***********************************************!*\
+  !*** ./src/components/students/AddStudent.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var _dbList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../dbList */ "./src/components/dbList.js");
+/* harmony import */ var _Student__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Student */ "./src/components/students/Student.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+// import React from 'react'
+// import ReactDOM from 'react-dom'
+// import List from '../dbList'
+// import Student from './Student'
+// const Form = ()=> {
+//   const [form, setForm]=React.useState({
+//         id:"",
+//         fname:"",
+//         lname:"",
+//         email:'',
+//         imgUrl:'',
+//         gpa:'',
+//         campusId:''
+//       });
+//     const [students, setStudents] = React.useState(List.students)
+//     const [list, setList]=React.useState([])
+//     React.useEffect(()=>{
+//         setList(students);
+//     });
+//     const handleChange = prop=> event=>{
+//       setForm({
+//         ...form,
+//         [prop]:event.target.value
+//       })
+//       console.log(form)
+//     }
+//     const handleSubmit =(event)=>{
+//       event.preventDefault();
+//       setStudents([...students,form]);
+//       setForm({
+//         id:"",
+//         fname:"",
+//         lname:"",
+//         email:'',
+//         imgUrl:'',
+//         gpa:'',
+//         campusId:''
+//       })
+//   }
+//   let itemsEle = list.map((itm,idx)=>{
+//     <div key={idx}>
+//       <Student data={itm}/>
+//     </div>
+//   })
+//     return (
+//       <div id='container'>
+//          <div className='allStudents'>
+//           {itemsEle}
+//         </div>
+//         <h1>::ADD A NEW STUDENT::</h1>
+//         <form onSubmit={handleSubmit}>
+//           <input type='text' value={form.fname} onChange={handleChange("fname")} placeholder={'First Name'}/><br/>
+//           <input type='text' value={form.lname} onChange={handleChange("lname")} placeholder={'Last Name'}/><br/>
+//           <input type='email' value={form.email} onChange={handleChange("email")} placeholder={'Email'}/><br/>
+//           <input type='text' value={form.imgUrl} onChange={handleChange("imgUrl")} placeholder={'Image URL'}/><br/>
+//           <input type='number' step='0.01' min='0' max='4' value={form.gpa} onChange={handleChange("gpa")} placeholder={'GPA'}/><br/>
+//           <input type='number' min='0' value={form.campusId} onChange={handleChange("campusId")} placeholder={'Campus ID'}/><br/>
+//           <input type='submit' value={'Submit'}/>
+//         </form>
+//       </div>
+//     )
+//   }
+// export default Form;
+
+
+
+
+
+var Form = function Form() {
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState({
+    id: "",
+    fname: "",
+    lname: "",
+    email: '',
+    imgUrl: '',
+    gpa: '',
+    campusId: ''
+  }),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      form = _React$useState2[0],
+      setForm = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default().useState(_dbList__WEBPACK_IMPORTED_MODULE_2__["default"].students),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      students = _React$useState4[0],
+      setStudents = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default().useState([]),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      list = _React$useState6[0],
+      setList = _React$useState6[1];
+
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+    setList(students);
+  });
+
+  var handleChange = function handleChange(prop) {
+    return function (event) {
+      setForm(_objectSpread(_objectSpread({}, form), {}, _defineProperty({}, prop, event.target.value)));
+    };
+  };
+
+  var handleSubmit = function handleSubmit(event) {
+    event.preventDefault();
+    setStudents([].concat(_toConsumableArray(students), [form]));
+    setForm({
+      id: "",
+      fname: "",
+      lname: "",
+      email: '',
+      imgUrl: '',
+      gpa: '',
+      campusId: ''
+    });
+  };
+
+  var itemsEle = list.map(function (itm, idx) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      key: idx
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Student__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      data: itm
+    }));
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "allStudents"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "allStudents"
+  }, itemsEle), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "::ADD A NEW CAMPUS::"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+    onSubmit: handleSubmit
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    value: form.fname,
+    onChange: handleChange("fname"),
+    placeholder: 'First Name'
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    value: form.lname,
+    onChange: handleChange("lname"),
+    placeholder: 'Last Name'
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "email",
+    value: form.email,
+    onChange: handleChange("email"),
+    placeholder: 'Email'
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    value: form.imgUrl,
+    onChange: handleChange("imgUrl"),
+    placeholder: 'Image URL'
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "number",
+    step: "0.01",
+    min: "0",
+    max: "4",
+    value: form.gpa,
+    onChange: handleChange("gpa"),
+    placeholder: 'GPA'
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "number",
+    min: "0",
+    value: form.campusId,
+    onChange: handleChange("campusId"),
+    placeholder: 'Campus ID'
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "submit",
+    value: 'Submit'
+  })));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Form);
 
 /***/ }),
 
@@ -2769,44 +3159,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var _campuses_Campus__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../campuses/Campus */ "./src/components/campuses/Campus.js");
+/* harmony import */ var _dbList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../dbList */ "./src/components/dbList.js");
+
 
 
 
 
 function CampusPage() {
-  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useParams)();
-  var campuses = [{
-    id: 1,
-    name: "Muppets University",
-    imgUrl: 'https://image-cdn.neatoshop.com/styleimg/37466/none/kiwigreen/default/269117-20.jpg',
-    address: '123 Sesame Street',
-    description: 'A place of learning, a place of knowledge'
-  }, {
-    id: 2,
-    name: "Sith Academy",
-    imgUrl: 'https://i.kym-cdn.com/photos/images/original/000/559/643/1b7.png',
-    address: '666 Koriban Drive',
-    description: 'Through passion, I gain strength. Through strength, I gain power. Through power, I gain victory. Through victory, my chains are broken.'
-  }];
-  var students = [{
-    id: 1,
-    fname: "Kermit",
-    lname: "Frog",
-    email: 'kfrog@sesamestreet.com',
-    imgUrl: 'https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg',
-    gpa: 4.0,
-    campusId: 1
-  }, {
-    id: 2,
-    fname: "Darth",
-    lname: "Vader",
-    email: 'dvader@killedhiswife.com',
-    imgUrl: 'https://as2.ftcdn.net/v2/jpg/03/13/36/79/1000_F_313367965_7B8Y7JrJ3JAG6zdjw51L59kVQZMlA9K7.jpg',
-    gpa: 4.0,
-    campusId: 2
-  }];
+  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useParams)();
+  var campuses = _dbList__WEBPACK_IMPORTED_MODULE_2__["default"].campuses;
+  var students = _dbList__WEBPACK_IMPORTED_MODULE_2__["default"].students;
   var student = students.find(function (itm) {
     return Number(params.id) === itm.id;
   });
@@ -2848,36 +3212,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Student__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Student */ "./src/components/students/Student.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _dbList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dbList */ "./src/components/dbList.js");
+/* harmony import */ var _AddStudent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AddStudent */ "./src/components/students/AddStudent.js");
+
+
 
 
 
 
 function Students() {
-  var students = [{
-    id: 1,
-    fname: "Kermit",
-    lname: "Frog",
-    email: 'kfrog@sesamestreet.com',
-    imgUrl: 'https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg',
-    gpa: 4.0,
-    campusId: 1
-  }, {
-    id: 2,
-    fname: "Darth",
-    lname: "Vader",
-    email: 'dvader@killedhiswife.com',
-    imgUrl: 'https://as2.ftcdn.net/v2/jpg/03/13/36/79/1000_F_313367965_7B8Y7JrJ3JAG6zdjw51L59kVQZMlA9K7.jpg',
-    gpa: 4.0,
-    campusId: 2
-  }];
+  var campuses = _dbList__WEBPACK_IMPORTED_MODULE_3__["default"].campuses;
+  var students = _dbList__WEBPACK_IMPORTED_MODULE_3__["default"].students;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "allStudents"
-  }, students.map(function (itm) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Student__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      key: itm.id,
-      data: itm
-    });
-  }));
+    className: "addStudent"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AddStudent__WEBPACK_IMPORTED_MODULE_4__["default"], null));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Students);
@@ -2932,21 +3280,22 @@ var fetchCampuses = function fetchCampuses() {
             case 3:
               _yield$axios$get = _context.sent;
               data = _yield$axios$get.data;
+              console.log(data);
               dispatch(setCampuses(data));
-              _context.next = 11;
+              _context.next = 12;
               break;
 
-            case 8:
-              _context.prev = 8;
+            case 9:
+              _context.prev = 9;
               _context.t0 = _context["catch"](0);
               console.log(_context.t0);
 
-            case 11:
+            case 12:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 8]]);
+      }, _callee, null, [[0, 9]]);
     }));
 
     return function (_x) {
