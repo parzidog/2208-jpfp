@@ -2661,24 +2661,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var _dbList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../dbList */ "./src/components/dbList.js");
+
 
 
 
 function Campus(props) {
   var id = "/campuses/".concat(props.data.id);
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
   var handleOnClick = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
     return navigate(id, {
       replace: true
     });
   }, [navigate]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    className: "campus",
-    onClick: handleOnClick
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "campus"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: props.data.imgUrl
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, props.data.name));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: handleOnClick
+  }, props.data.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "X"));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Campus);
@@ -2935,69 +2938,6 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-// import React from 'react'
-// import ReactDOM from 'react-dom'
-// import List from '../dbList'
-// import Student from './Student'
-// const Form = ()=> {
-//   const [form, setForm]=React.useState({
-//         id:"",
-//         fname:"",
-//         lname:"",
-//         email:'',
-//         imgUrl:'',
-//         gpa:'',
-//         campusId:''
-//       });
-//     const [students, setStudents] = React.useState(List.students)
-//     const [list, setList]=React.useState([])
-//     React.useEffect(()=>{
-//         setList(students);
-//     });
-//     const handleChange = prop=> event=>{
-//       setForm({
-//         ...form,
-//         [prop]:event.target.value
-//       })
-//       console.log(form)
-//     }
-//     const handleSubmit =(event)=>{
-//       event.preventDefault();
-//       setStudents([...students,form]);
-//       setForm({
-//         id:"",
-//         fname:"",
-//         lname:"",
-//         email:'',
-//         imgUrl:'',
-//         gpa:'',
-//         campusId:''
-//       })
-//   }
-//   let itemsEle = list.map((itm,idx)=>{
-//     <div key={idx}>
-//       <Student data={itm}/>
-//     </div>
-//   })
-//     return (
-//       <div id='container'>
-//          <div className='allStudents'>
-//           {itemsEle}
-//         </div>
-//         <h1>::ADD A NEW STUDENT::</h1>
-//         <form onSubmit={handleSubmit}>
-//           <input type='text' value={form.fname} onChange={handleChange("fname")} placeholder={'First Name'}/><br/>
-//           <input type='text' value={form.lname} onChange={handleChange("lname")} placeholder={'Last Name'}/><br/>
-//           <input type='email' value={form.email} onChange={handleChange("email")} placeholder={'Email'}/><br/>
-//           <input type='text' value={form.imgUrl} onChange={handleChange("imgUrl")} placeholder={'Image URL'}/><br/>
-//           <input type='number' step='0.01' min='0' max='4' value={form.gpa} onChange={handleChange("gpa")} placeholder={'GPA'}/><br/>
-//           <input type='number' min='0' value={form.campusId} onChange={handleChange("campusId")} placeholder={'Campus ID'}/><br/>
-//           <input type='submit' value={'Submit'}/>
-//         </form>
-//       </div>
-//     )
-//   }
-// export default Form;
 
 
 
@@ -3062,7 +3002,7 @@ var Form = function Form() {
     id: "allStudents"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "allStudents"
-  }, itemsEle), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "::ADD A NEW CAMPUS::"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+  }, itemsEle), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "::ADD A NEW STUDENT::"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     onSubmit: handleSubmit
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
@@ -3134,12 +3074,13 @@ function Student(props) {
       replace: true
     });
   }, [navigate]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    className: "student",
-    onClick: handleOnClick
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "student"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: props.data.imgUrl
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, props.data.fname, " ", props.data.lname));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: handleOnClick
+  }, props.data.fname, " ", props.data.lname), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "X"));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Student);

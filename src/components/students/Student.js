@@ -8,10 +8,11 @@ function Student(props){
     const handleOnClick = useCallback(() => navigate(id, {replace: true}), [navigate]);
 
     return(
-        <button className ='student' onClick={handleOnClick}>
+        <div className ='student'>
             <img src={props.data.imgUrl}/>
-            <h1>{props.data.fname} {props.data.lname}</h1>
-        </button>
+            <button onClick={handleOnClick}>{props.data.fname} {props.data.lname}</button>
+            <button>X</button>
+        </div>
     )
 }
 

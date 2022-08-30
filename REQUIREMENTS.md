@@ -78,18 +78,18 @@ Congrats! You have completed your second vertical slice! Make sure to `commit -m
 
 #### Frontend
 
-- [ ] Write a component to display a form for adding a new campus that contains inputs for _at least_ the name and address.
-- [ ] Display this component as part of the all-campuses view, alongside the list of campuses
+- [x] Write a component to display a form for adding a new campus that contains inputs for _at least_ the name and address.
+- [x] Display this component as part of the all-campuses view, alongside the list of campuses
 - Submitting the form with a valid name/address should:
 
   - [ ] Make an AJAX request that causes the new campus to be persisted in the database
-  - [ ] Add the new campus to the list of campuses without needing to refresh the page
+  - [x] Add the new campus to the list of campuses without needing to refresh the page
 
-- [ ] Write a component to display a form for adding a new student that contains inputs for _at least_ first name, last name and email
-- [ ] Display this component as part of the all-students view, alongside the list of students
+- [x] Write a component to display a form for adding a new student that contains inputs for _at least_ first name, last name and email
+- [x] Display this component as part of the all-students view, alongside the list of students
 - Submitting the form with a valid first name/last name/email should:
   - [ ] Make an AJAX request that causes the new student to be persisted in the database
-  - [ ] Add the new student to the list of students without needing to refresh the page
+  - [x] Add the new student to the list of students without needing to refresh the page
 
 #### Backend
 
@@ -106,13 +106,13 @@ Congrats! You have completed your third vertical slice! Make sure to `commit -m 
 
 #### Frontend
 
-- [ ] In the all-campuses view, include an `X` button next to each campus
+- [x] In the all-campuses view, include an `X` button next to each campus
 - Clicking the `X` button should:
 
   - [ ] Make an AJAX request that causes that campus to be removed from database
   - [ ] Remove the campus from the list of campuses without needing to refresh the page
 
-- [ ] In the all-students view, include an `X` button next to each student
+- [x] In the all-students view, include an `X` button next to each student
 - Clicking the `X` button should:
   - [ ] Make an AJAX request that causes that student to be removed from database
   - [ ] Remove the student from the list of students without needing to refresh the page

@@ -1,5 +1,6 @@
 import React, {useCallback} from "react";
 import {useNavigate} from "react-router-dom"
+import List from "../dbList";
 
 function Campus(props){
     let id = `/campuses/${props.data.id}`
@@ -7,10 +8,11 @@ function Campus(props){
     const handleOnClick = useCallback(() => navigate(id, {replace: true}), [navigate]);
 
     return(
-        <button className ='campus' onClick={handleOnClick}>
+        <div className ='campus'>
             <img src={props.data.imgUrl}></img>
-            <h1>{props.data.name}</h1>
-        </button>
+            <button onClick={handleOnClick}>{props.data.name}</button>
+            <button>X</button>
+        </div>
     )
 }
 
