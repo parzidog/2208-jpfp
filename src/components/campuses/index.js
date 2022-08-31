@@ -1,7 +1,7 @@
 import React from "react";
 import Campus from "./Campus"
 import {useSelector} from "react-redux";
-import Form from "./AddCampus";
+import Form from "./AllCampuses";
 
 function campuses(){
 

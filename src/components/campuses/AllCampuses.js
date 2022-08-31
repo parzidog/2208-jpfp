@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import { useSelector } from 'react-redux';
 import { selectCampuses } from '../../features/campusesSlice';
-import { selectStudents } from '../../features/studentsSlice';
 import Campus from './Campus'
 
 const Form = ()=> {
@@ -16,7 +15,6 @@ const Form = ()=> {
       });
 
     const campuses = useSelector(selectCampuses)
-    const students = useSelector(selectStudents)
     const [list, setList]=React.useState([])
 
     React.useEffect(()=>{

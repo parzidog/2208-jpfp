@@ -21,6 +21,14 @@ app.use("*", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "/public/index.html"));
 });
 
+app.use((req, res, next) => {
+  if (path.extname(req.path).length > 0) {
+    res.status(404).end();
+  } else {
+    next();
+  }
+});
+
 // Error-handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
