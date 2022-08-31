@@ -1,23 +1,18 @@
-import {createStore, combineReducers, applyMiddleware} from 'redux'
-import {createLogger} from 'redux-logger'
-import thunkMiddleware from 'redux-thunk'
-import {composeWithDevTools} from 'redux-devtools-extension'
-import students from './students'
-import campus from './campus'
-import singleCampus from './singleCampus'
-import singleStudent from './singleStudent'
+import { configureStore } from "@reduxjs/toolkit";
+import campusesSlice from "../features/campusesSlice";
+import singleCampusSlice from "../features/singleCampusSlice";
+import singleStudentSlice from "../features/singleStudentSlice";
+import studentsSlice from "../features/studentsSlice";
 
-const reducer = combineReducers({
-  students,
-  campus,
-  singleCampus,
-  singleStudent
-})
+const store = configureStore(
+  {
+  reducer: {
+    campuses: campusesSlice,
+    students: studentsSlice,
+    singleStudent: singleStudentSlice,
+    singleCampus: singleCampusSlice,
+  },
+}
+);
 
-const middleware = composeWithDevTools(
-  applyMiddleware(thunkMiddleware, createLogger({collapsed:true}))
-)
-
-const store = createStore(reducer, middleware)
-
-export default store
+export default store;

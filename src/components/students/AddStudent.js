@@ -1,10 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import List from '../dbList'
+import { useSelector } from 'react-redux'
+import { selectStudents } from '../../features/studentsSlice'
 import Student from './Student'
 
 const Form = ()=> {
 
+  const students = useSelector(selectStudents)
+  const [list, setList]=React.useState([])
   const [form, setForm]=React.useState({
         id:"",
         fname:"",
@@ -14,9 +17,6 @@ const Form = ()=> {
         gpa:'',
         campusId:''
       });
-
-    const [students, setStudents] = React.useState(List.students)
-    const [list, setList]=React.useState([])
 
     React.useEffect(()=>{
         setList(students);

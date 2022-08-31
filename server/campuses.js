@@ -1,22 +1,26 @@
 const router = require('express').Router()
 const {Campus, Student} = require('../db')
+const AddCampus = require('../src/components/campuses/AddCampus')
 
-// GET /api/campuses
+// GET /campuses
 router.get('/', async (req, res, next) => {
   try {
-    const campuses = await Campus.findAll()
-    res.json(campuses)
+    const campuses = await Campus.findAll({
+      attributes: ['id', 'name', 'imgUrl']
+    })
+    res.send(AddCampus)
   }
   catch (error) {
     next(error)
   }
 })
 
-// GET /api/campuses/:campusId
+// GET /campuses/:campusId
 router.get('/:campusId', async (req, res, next) => {
   try {
     const campus = await Campus.findByPk(req.params.campusId)
-    res.json(campus)
+    const students = await Student.findAll()
+    res.send(campusPage(campus))
   }
   catch (error) {
     next(error)
@@ -24,7 +28,7 @@ router.get('/:campusId', async (req, res, next) => {
 })
 
 
-// GET /api/campuses/:campusId/students
+// GET /campuses/:campusId/students
 router.get('/:campusId/students', async (req, res, next) => {
   try {
     const student = await Student.findAll({

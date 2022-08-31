@@ -1,6 +1,5 @@
 import React, {useCallback} from "react";
 import {useNavigate} from "react-router-dom"
-import List from "../dbList";
 
 function Campus(props){
     let id = `/campuses/${props.data.id}`

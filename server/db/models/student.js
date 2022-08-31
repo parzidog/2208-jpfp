@@ -38,7 +38,7 @@ module.exports = db.define('student', {
         notEmpty: true
       }
     },
-    imageUrl: {
+    imgUrl: {
       type: Sequelize.STRING,
       defaultValue: 'https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg'
     },

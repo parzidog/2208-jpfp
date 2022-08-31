@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {Route, Routes} from "react-router-dom";
 import Students from "./components/students"
 import Campuses from "./components/campuses";
 import Navigation from "./components/navigation";
 import StudentPage from "./components/students/StudentPage";
 import CampusPage from "./components/campuses/CampusPage";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchStudentsAsync } from './features/studentsSlice'
+import { fetchCampusesAsync } from './features/campusesSlice'
 
 
 function App(){
+    const dispatch=useDispatch()
 
+    useEffect(()=>{
+        dispatch(fetchCampusesAsync());
+        dispatch(fetchStudentsAsync());
+    }, [dispatch]);
 
     return(
         <div className="App">

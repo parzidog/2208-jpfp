@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import Student from "../students/Student";
-import List from "../dbList";
+import { selectCampuses } from "../../features/campusesSlice";
+import { selectStudents } from "../../features/studentsSlice";
 
 function CampusPage(){
     const params = useParams();
-   const campuses = List.campuses;
-    const students=List.students;
+    const campuses = useSelector(selectCampuses)
+    const students=useSelector(selectStudents)
 
     const campus = campuses.find(itm => Number(params.id)===itm.id);
 

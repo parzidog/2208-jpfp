@@ -14,6 +14,17 @@ module.exports = db.define('campus', {
       notEmpty: true
     }
   },
+  imgUrl: {
+    type: Sequelize.STRING,
+    defaultValue: 'https://image-cdn.neatoshop.com/styleimg/37466/none/kiwigreen/default/269117-20.jpg'
+  },
+  address:{
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate:{
+      notEmpty: true
+    }
+  },
   description: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -21,8 +32,4 @@ module.exports = db.define('campus', {
       notEmpty: true
     }
   },
-  imageUrl: {
-    type: Sequelize.STRING,
-    defaultValue: 'https://image-cdn.neatoshop.com/styleimg/37466/none/kiwigreen/default/269117-20.jpg'
-  }
 });

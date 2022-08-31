@@ -1,32 +1,32 @@
 'use strict'
 
-const Campus = require('../db/models/campus');
-const Student = require('../db/models/student');
-const router = require('express').Router();
+const router = require("express").Router();
+const { Student, Campus } = require("../db");
 
-router.get('/', async (req, res, next) => {
+// GET /api/students
+router.get("/", async (req, res, next) => {
   try {
     const students = await Student.findAll({
-      include: [Campus]
+      where: req.query,
+      include: [Campus],
     });
     res.json(students);
-  }
-  catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 });
 
-router.get('/:id', async (req, res, next) => {
+// GET /api/students/:studentId
+router.get("/:studentId", async (req, res, next) => {
   try {
-    const student = await Student.findByPk(req.params.id, {
-      include: [Campus]
+    const student = await Student.findByPk(req.params.studentId, {
+      include: [Campus],
     });
+
     res.json(student);
-  }
-  catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 });
-
 
 module.exports = router;

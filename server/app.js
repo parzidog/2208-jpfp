@@ -17,17 +17,9 @@ app.use(express.urlencoded({extended: true}))
 
 app.use('/api', require('./api'));
 
-app.get('/', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'))
-})
-
-app.get('/students', (req, res, next)=> {
-  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'))
-})
-
-app.get('/campuses', (req, res, next)=> {
-  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'))
-})
+app.use("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "/public/index.html"));
+});
 
 // Error-handling middleware
 app.use((err, req, res, next) => {

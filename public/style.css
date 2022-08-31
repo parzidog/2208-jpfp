@@ -29,8 +29,8 @@ body{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    height: 250px;
-    width: 250px;
+    height: 300px;
+    width: 300px;
     font-size: small;
     padding: 5px;
 }
@@ -90,4 +90,12 @@ button{
 input{
     border-radius: 10px;
     padding: 3px;
+}
+h3{
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+img{
+    border-radius: 3% !important;
 }
