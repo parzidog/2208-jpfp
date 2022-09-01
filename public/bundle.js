@@ -4748,7 +4748,9 @@ var Form = function Form() {
       setForm = _React$useState4[1];
 
   react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
-    setList(students);
+    if (list.length < students.length) {
+      setList(students);
+    }
   });
 
   var handleChange = function handleChange(prop) {
@@ -4822,7 +4824,10 @@ var Form = function Form() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     value: form.campusId,
     onChange: handleChange("campusId")
-  }, dropdown), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: 0,
+    key: 'CampusDefault'
+  }, "Select a campus"), dropdown), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "submit",
     value: 'Submit'
   })));

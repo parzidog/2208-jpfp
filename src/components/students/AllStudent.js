@@ -9,8 +9,9 @@ const Form = ()=> {
 
   const dispatch = useDispatch()
 
-  const students = useSelector(selectStudents)
+  let students = useSelector(selectStudents)
   const campuses = useSelector(selectCampuses)
+
   const [list, setList]=React.useState(students)
   const [form, setForm]=React.useState({
         id:"",
@@ -23,7 +24,9 @@ const Form = ()=> {
       });
 
       React.useEffect(()=>{
-        setList(students);
+        if(list.length < students.length){
+          setList(students);
+        }
       });
 
     const handleChange = prop=> event=>{
@@ -71,6 +74,7 @@ const Form = ()=> {
           <input type='text' value={form.imgUrl} onChange={handleChange("imgUrl")} placeholder={'Image URL'}/><br/>
           <input type='number' step='0.01' min='0' max='4' value={form.gpa} onChange={handleChange("gpa")} placeholder={'GPA'}/><br/>
           <select value={form.campusId} onChange={handleChange("campusId")}>
+            <option value={0} key={'CampusDefault'}>Select a campus</option>
             {dropdown}
           </select><br/>
           <input type='submit' value={'Submit'}/>
