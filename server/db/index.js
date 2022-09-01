@@ -7,6 +7,13 @@ const Campus = require('./models/campus')
 
 const campuses = [
   {
+        id:0,
+        name:"Unregistered Students",
+        imgUrl: 'https://image.shutterstock.com/image-vector/abstract-school-building-silhouette-on-600w-222076837.jpg',
+        address: 'None',
+        description: 'Students to be registered'
+         },
+  {
         id:1,
         name:"Muppets University",
         imgUrl: 'https://image-cdn.neatoshop.com/styleimg/37466/none/kiwigreen/default/269117-20.jpg',
@@ -85,12 +92,12 @@ const syncAndSeed = async () => {
   await Promise.all(campuses.map(campus => Campus.create(campus)));
   await Promise.all(students.map(student => Student.create(student)));
   
-  // await db.close();
+//   await db.close();
   
   console.log("Successfully seeded the database!");
   } catch (error) {
   console.error("There was a problem seeding the database", error);
-  // await db.close();
+//   await db.close();
   }
   };
 

@@ -2,9 +2,8 @@ module.exports = {
   mode: "development",
   entry: ["./src/index.js"],
   output: {
-    path: BUILD_PATH,
-    publicPath: '/',
-    filename: 'bundle.js'
+    path: __dirname + "/public",
+    filename: "bundle.js",
   },
   context: __dirname,
   devtool: "source-map",

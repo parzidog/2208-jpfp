@@ -12,7 +12,21 @@ export const fetchStudentsAsync = createAsyncThunk("allStudents", async () => {
   }
 });
 
-// console.log('DATA: ', fetchStudentsAsync)
+export const addStudentAsync = createAsyncThunk("createStudent", async ({fname, lname, email, gpa, imgUrl, campusId=0}) => {
+  try {
+    const { data } = await axios.post(`/api/students/`,{
+      fname,
+      lname,
+      email, 
+      gpa,
+      imgUrl,
+      campusId
+    });
+    return data;
+  } catch (err) {
+    console.log(err.response);
+  }
+});
 
 
 const studentsSlice = createSlice({

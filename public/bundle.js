@@ -4688,8 +4688,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _features_studentsSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../features/studentsSlice */ "./src/features/studentsSlice.js");
-/* harmony import */ var _Student__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Student */ "./src/components/students/Student.js");
+/* harmony import */ var _features_campusesSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../features/campusesSlice */ "./src/features/campusesSlice.js");
+/* harmony import */ var _features_studentsSlice__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../features/studentsSlice */ "./src/features/studentsSlice.js");
+/* harmony import */ var _Student__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Student */ "./src/components/students/Student.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -4722,10 +4723,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var Form = function Form() {
-  var students = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(_features_studentsSlice__WEBPACK_IMPORTED_MODULE_3__.selectStudents);
 
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState([]),
+var Form = function Form() {
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
+  var students = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(_features_studentsSlice__WEBPACK_IMPORTED_MODULE_4__.selectStudents);
+  var campuses = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(_features_campusesSlice__WEBPACK_IMPORTED_MODULE_3__.selectCampuses);
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(students),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       list = _React$useState2[0],
       setList = _React$useState2[1];
@@ -4755,7 +4759,8 @@ var Form = function Form() {
 
   var handleSubmit = function handleSubmit(event) {
     event.preventDefault();
-    setStudents([].concat(_toConsumableArray(students), [form]));
+    setList([].concat(_toConsumableArray(list), [form]));
+    dispatch((0,_features_studentsSlice__WEBPACK_IMPORTED_MODULE_4__.addStudentAsync)(form));
     setForm({
       id: "",
       fname: "",
@@ -4770,9 +4775,15 @@ var Form = function Form() {
   var itemsEle = list.map(function (itm, idx) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       key: idx
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Student__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Student__WEBPACK_IMPORTED_MODULE_5__["default"], {
       data: itm
     }));
+  });
+  var dropdown = campuses.map(function (campus) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+      value: campus.id,
+      key: "Campus".concat(campus.id)
+    }, campus.name);
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "allStudents"
@@ -4808,13 +4819,10 @@ var Form = function Form() {
     value: form.gpa,
     onChange: handleChange("gpa"),
     placeholder: 'GPA'
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "number",
-    min: "0",
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     value: form.campusId,
-    onChange: handleChange("campusId"),
-    placeholder: 'Campus ID'
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    onChange: handleChange("campusId")
+  }, dropdown), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "submit",
     value: 'Submit'
   })));
@@ -5245,6 +5253,7 @@ var selectSingleStudent = function selectSingleStudent(state) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "addStudentAsync": () => (/* binding */ addStudentAsync),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
 /* harmony export */   "fetchStudentsAsync": () => (/* binding */ fetchStudentsAsync),
 /* harmony export */   "selectStudents": () => (/* binding */ selectStudents)
@@ -5290,8 +5299,49 @@ var fetchStudentsAsync = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.create
       }
     }
   }, _callee, null, [[0, 8]]);
-}))); // console.log('DATA: ', fetchStudentsAsync)
+})));
+var addStudentAsync = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createAsyncThunk)("createStudent", /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(_ref2) {
+    var fname, lname, email, gpa, imgUrl, _ref2$campusId, campusId, _yield$axios$post, data;
 
+    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            fname = _ref2.fname, lname = _ref2.lname, email = _ref2.email, gpa = _ref2.gpa, imgUrl = _ref2.imgUrl, _ref2$campusId = _ref2.campusId, campusId = _ref2$campusId === void 0 ? 0 : _ref2$campusId;
+            _context2.prev = 1;
+            _context2.next = 4;
+            return axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/students/", {
+              fname: fname,
+              lname: lname,
+              email: email,
+              gpa: gpa,
+              imgUrl: imgUrl,
+              campusId: campusId
+            });
+
+          case 4:
+            _yield$axios$post = _context2.sent;
+            data = _yield$axios$post.data;
+            return _context2.abrupt("return", data);
+
+          case 9:
+            _context2.prev = 9;
+            _context2.t0 = _context2["catch"](1);
+            console.log(_context2.t0.response);
+
+          case 12:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2, null, [[1, 9]]);
+  }));
+
+  return function (_x) {
+    return _ref3.apply(this, arguments);
+  };
+}());
 var studentsSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createSlice)({
   name: "students",
   initialState: initialState,

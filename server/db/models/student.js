@@ -10,40 +10,40 @@ module.exports = db.define('student', {
   fname: {
     type: Sequelize.STRING,
     allowNull: false,
-    validate: {
-      notEmpty: true
-    }
+    // validate: {
+    //   notEmpty: true
+    // }
   },
   lname: {
     type: Sequelize.STRING,
     allowNull: false,
-    validate: {
-        notEmpty: true
-      }
+    // validate: {
+    //     notEmpty: true
+    //   }
     },
-    email: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-          isEmail: {
-              msg: "Must be a valid email address",
-          }
-      }
-    },
-    gpa: {
-      type: Sequelize.FLOAT,
-      allowNull: false,
-      validate: {
-        notEmpty: true
-      }
-    },
-    imgUrl: {
-      type: Sequelize.STRING,
-      defaultValue: 'https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg'
-    },
-    campusId: {
-      type: Sequelize.INTEGER,
-      defaultValue: 0,
-    }
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true,
+    // validate: {
+    //   isEmail: {
+    //       msg: "Must be a valid email address",
+    //   }
+    // }
+  },
+  gpa: {
+    type: Sequelize.FLOAT,
+    allowNull: false,
+    // validate: {
+    //   notEmpty: true
+    // }
+  },
+  imgUrl: {
+    type: Sequelize.STRING,
+    defaultValue: 'https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg'
+  },
+  campusId: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0,
+  }
 });

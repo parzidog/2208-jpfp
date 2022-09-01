@@ -1,13 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { useSelector } from 'react-redux'
-import { selectStudents } from '../../features/studentsSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectCampuses } from '../../features/campusesSlice'
+import { addStudentAsync, selectStudents } from '../../features/studentsSlice'
 import Student from './Student'
 
 const Form = ()=> {
 
+  const dispatch = useDispatch()
+
   const students = useSelector(selectStudents)
-  const [list, setList]=React.useState([])
+  const campuses = useSelector(selectCampuses)
+  const [list, setList]=React.useState(students)
   const [form, setForm]=React.useState({
         id:"",
         fname:"",
@@ -18,9 +22,9 @@ const Form = ()=> {
         campusId:''
       });
 
-    React.useEffect(()=>{
+      React.useEffect(()=>{
         setList(students);
-    });
+      });
 
     const handleChange = prop=> event=>{
         setForm({
@@ -31,7 +35,8 @@ const Form = ()=> {
 
     const handleSubmit =(event)=>{
         event.preventDefault();
-        setStudents([...students,form]);
+        setList([...list, form])
+        dispatch(addStudentAsync(form))
         setForm({
           id:"",
           fname:"",
@@ -49,6 +54,10 @@ const Form = ()=> {
     </div>
   )
 
+  let dropdown = campuses.map((campus)=>
+    <option value={campus.id} key={`Campus${campus.id}`}>{campus.name}</option>
+  )
+
     return (
       <div id='allStudents'>
         <div className='allStudents'>
@@ -56,13 +65,15 @@ const Form = ()=> {
         </div>
         <h1>::ADD A NEW STUDENT::</h1>
         <form onSubmit={handleSubmit}>
-           <input type='text' value={form.fname} onChange={handleChange("fname")} placeholder={'First Name'}/><br/>
-           <input type='text' value={form.lname} onChange={handleChange("lname")} placeholder={'Last Name'}/><br/>
-           <input type='email' value={form.email} onChange={handleChange("email")} placeholder={'Email'}/><br/>
-           <input type='text' value={form.imgUrl} onChange={handleChange("imgUrl")} placeholder={'Image URL'}/><br/>
-           <input type='number' step='0.01' min='0' max='4' value={form.gpa} onChange={handleChange("gpa")} placeholder={'GPA'}/><br/>
-           <input type='number' min='0' value={form.campusId} onChange={handleChange("campusId")} placeholder={'Campus ID'}/><br/>
-           <input type='submit' value={'Submit'}/>
+          <input type='text' value={form.fname} onChange={handleChange("fname")} placeholder={'First Name'}/><br/>
+          <input type='text' value={form.lname} onChange={handleChange("lname")} placeholder={'Last Name'}/><br/>
+          <input type='email' value={form.email} onChange={handleChange("email")} placeholder={'Email'}/><br/>
+          <input type='text' value={form.imgUrl} onChange={handleChange("imgUrl")} placeholder={'Image URL'}/><br/>
+          <input type='number' step='0.01' min='0' max='4' value={form.gpa} onChange={handleChange("gpa")} placeholder={'GPA'}/><br/>
+          <select value={form.campusId} onChange={handleChange("campusId")}>
+            {dropdown}
+          </select><br/>
+          <input type='submit' value={'Submit'}/>
          </form>
       </div>
     )
