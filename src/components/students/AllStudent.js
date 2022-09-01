@@ -27,7 +27,7 @@ const Form = ()=> {
         if(list.length < students.length){
           setList(students);
         }
-      });
+        });
 
     const handleChange = prop=> event=>{
         setForm({
@@ -36,10 +36,10 @@ const Form = ()=> {
         })
     }
 
-    const handleSubmit =(event)=>{
+    const handleSubmit = async (event)=>{
         event.preventDefault();
+        dispatch(await addStudentAsync(form))
         setList([...list, form])
-        dispatch(addStudentAsync(form))
         setForm({
           id:"",
           fname:"",

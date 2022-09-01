@@ -10,33 +10,33 @@ module.exports = db.define('student', {
   fname: {
     type: Sequelize.STRING,
     allowNull: false,
-    // validate: {
-    //   notEmpty: true
-    // }
+    validate: {
+      notEmpty: true
+    }
   },
   lname: {
     type: Sequelize.STRING,
     allowNull: false,
-    // validate: {
-    //     notEmpty: true
-    //   }
+    validate: {
+        notEmpty: true
+      }
     },
   email: {
     type: Sequelize.STRING,
     allowNull: false,
     unique: true,
-    // validate: {
-    //   isEmail: {
-    //       msg: "Must be a valid email address",
-    //   }
-    // }
+    validate: {
+      isEmail: {
+          msg: "Must be a valid email address",
+      }
+    }
   },
   gpa: {
     type: Sequelize.FLOAT,
     allowNull: false,
-    // validate: {
-    //   notEmpty: true
-    // }
+    validate: {
+      notEmpty: true
+    }
   },
   imgUrl: {
     type: Sequelize.STRING,
