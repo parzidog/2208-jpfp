@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
-import { useSelector } from 'react-redux';
-import { selectCampuses } from '../../features/campusesSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addCampusesAsync, selectCampuses } from '../../features/campusesSlice';
 import Campus from './Campus'
 
 const Form = ()=> {
+
+  const dispatch = useDispatch()
 
   const [form, setForm]=React.useState({
         id:"",
@@ -18,8 +20,10 @@ const Form = ()=> {
     const [list, setList]=React.useState([])
 
     React.useEffect(()=>{
-        setList(campuses);
-    });
+        if(list.length < campuses.length){
+          setList(campuses);
+        }
+        });
 
     const handleChange = prop=> event=>{
         setForm({
@@ -28,9 +32,10 @@ const Form = ()=> {
         })
     }
 
-    const handleSubmit =(event)=>{
+    const handleSubmit = async (event)=>{
         event.preventDefault();
-        setCampuses([...campuses,form]);
+        dispatch(await addCampusesAsync(form))
+        setList([...list,form]);
         setForm({
           id:"",
           name:"",

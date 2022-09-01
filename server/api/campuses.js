@@ -12,6 +12,16 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+// POST /api/campuses
+router.post('/', async(req,res,next)=>{
+  try{
+    res.send(await Campus.create(req.body))
+  }
+  catch(error){
+    console.log(error)
+  }
+})
+
 // GET /api/campuses/:campusId
 router.get('/:campusId', async (req, res, next) => {
   try {

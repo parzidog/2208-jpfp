@@ -74,7 +74,7 @@ const Form = ()=> {
           <input type='text' value={form.imgUrl} onChange={handleChange("imgUrl")} placeholder={'Image URL'}/><br/>
           <input type='number' step='0.01' min='0' max='4' value={form.gpa} onChange={handleChange("gpa")} placeholder={'GPA'}/><br/>
           <select value={form.campusId} onChange={handleChange("campusId")}>
-            <option value={0} key={'CampusDefault'}>Select a campus</option>
+            <option key={'CampusDefault'}>Select a campus</option>
             {dropdown}
           </select><br/>
           <input type='submit' value={'Submit'}/>

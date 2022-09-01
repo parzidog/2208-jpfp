@@ -8,20 +8,18 @@ const Campus = require('./models/campus')
 const campuses = [
   {
         id:0,
-        name:"Unregistered Students",
+        name:"Unregistered",
         imgUrl: 'https://image.shutterstock.com/image-vector/abstract-school-building-silhouette-on-600w-222076837.jpg',
         address: 'None',
         description: 'Students to be registered'
          },
   {
-        id:1,
         name:"Muppets University",
         imgUrl: 'https://image-cdn.neatoshop.com/styleimg/37466/none/kiwigreen/default/269117-20.jpg',
         address: '123 Sesame Street',
         description: 'A place of learning, a place of knowledge'
          },
     {
-        id:2,
         name:"Sith Academy",
         imgUrl: 'https://i.kym-cdn.com/photos/images/original/000/559/643/1b7.png',
         address: '666 Koriban Drive',
@@ -30,7 +28,6 @@ const campuses = [
 ];
 const students=[
     {
-            id:1,
             fname:"Kermit",
             lname:"Frog",
             email: 'kfrog@sesamestreet.com',
@@ -39,7 +36,6 @@ const students=[
             campusId: 1
         },
         {
-            id:2,
             fname:"Darth",
             lname:"Vader",
             email: 'dvader@killedhiswife.com',
@@ -48,7 +44,6 @@ const students=[
             campusId: 2
         },
         {
-            id:3,
             fname:"Piggy",
             lname:"Lee",
             email: 'plee@muppetsrule.com',
@@ -57,7 +52,6 @@ const students=[
             campusId: 1
         },
         {
-            id:4,
             fname:"Darth",
             lname:"Revan",
             email: 'drevan@pickaside.com',
@@ -66,7 +60,6 @@ const students=[
             campusId: 2
         },
         {
-            id:5,
             fname:"Boba",
             lname:"Fett",
             email: 'bfett@misseshisdaddy.com',
@@ -75,7 +68,6 @@ const students=[
             campusId: 2
         },
         {
-            id:6,
             fname:"Fozzie",
             lname:"Bear",
             email: 'fbear@frankoz.com',

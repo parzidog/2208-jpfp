@@ -12,6 +12,20 @@ export const fetchCampusesAsync = createAsyncThunk("allCampuses", async () => {
   }
 });
 
+export const addCampusesAsync = createAsyncThunk("createCampus", async ({name,imgUrl,address,description}) => {
+  try {
+    const { data } = await axios.post(`/api/campuses/`,{
+          name,
+          imgUrl,
+          address,
+          description
+        });
+    return data;
+  } catch (err) {
+    console.log(err.response);
+  }
+});
+
 const campusesSlice = createSlice({
   name: "campuses",
   initialState,
