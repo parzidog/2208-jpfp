@@ -60,6 +60,7 @@ function CampusPage(){
         }
     })
 
+
     return(
         <div className='singleCampus'>
             <img src={imgUrl}/>
@@ -67,10 +68,10 @@ function CampusPage(){
             <h3>ADDRESS:<br/><br/>{address}</h3>
             <p>MOTTO:<br/><br/>{description}</p>
             <h2>::Attending Students::</h2>
-            <div className="attendingStudents">
+            <div key={'students'} className="attendingStudents">
             {attendingStudents.map(student=>
-            <Student key={student.id} data={student}/>)
-            }
+                <Student key={student.id} data={student}/>
+            )}
             <h1>::EDIT CAMPUS::</h1>
             </div>
             <form onSubmit={handleSubmit}>

@@ -4748,6 +4748,7 @@ function CampusPage() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: imgUrl
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "ADDRESS:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), address), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "MOTTO:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "::Attending Students::"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    key: 'students',
     className: "attendingStudents"
   }, attendingStudents.map(function (student) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_students_Student__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -5119,6 +5120,38 @@ function Student(props) {
     };
   }();
 
+  var handleRegister = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      var student;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              student = {
+                id: props.data.id,
+                fname: props.data.fname,
+                lname: props.data.lname,
+                email: props.data.email,
+                imgUrl: props.data.imgUrl,
+                gpa: props.data.gpa,
+                campusId: 0
+              };
+              _context2.next = 3;
+              return dispatch((0,_features_studentsSlice__WEBPACK_IMPORTED_MODULE_2__.editStudentAsync)(student));
+
+            case 3:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function handleRegister() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "student"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
@@ -5127,7 +5160,9 @@ function Student(props) {
     onClick: handleOnClick
   }, props.data.fname, " ", props.data.lname), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: handleDelete
-  }, "X"));
+  }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: handleRegister
+  }, "Unregister ", props.data.fname));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Student);
