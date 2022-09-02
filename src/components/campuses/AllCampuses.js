@@ -25,6 +25,10 @@ const Form = ()=> {
         }
         });
 
+    React.useEffect(()=>{
+        setList(campuses);
+        },[form]);
+
     const handleChange = prop=> event=>{
         setForm({
             ...form,

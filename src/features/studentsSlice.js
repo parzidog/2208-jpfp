@@ -22,12 +22,37 @@ export const addStudentAsync = createAsyncThunk("createStudent", async ({fname, 
       imgUrl,
       campusId
     });
+    console.log('FIRST NAME: ',fname)
     return data;
   } catch (err) {
     console.log(err.response);
   }
 });
 
+export const deleteStudentAsync = createAsyncThunk("deleteStudent", async (studentId)=>{
+  try{
+    const { data } = await axios.delete(`/api/students/${studentId}`);
+    return data;
+  }
+  catch(err){
+    console.log(err)
+  }
+})
+
+export const editStudentAsync = createAsyncThunk(
+  "editStudent",
+  async ({id,fname, lname, email, gpa, imgUrl, campusId}) => {
+    const { data } = await axios.put(`/api/students/${id}`, {
+      fname,
+      lname,
+      email, 
+      gpa,
+      imgUrl,
+      campusId
+    });
+    return data;
+  }
+);
 
 const studentsSlice = createSlice({
   name: "students",

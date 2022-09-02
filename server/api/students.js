@@ -39,4 +39,27 @@ router.get("/:studentId", async (req, res, next) => {
   }
 });
 
+// DELETE /api/students/:studentId
+router.delete("/:studentId", async (req, res, next)=>{
+  try{
+    const student = await Student.findByPk(req.params.studentId);
+    await student.destroy();
+    res.send(student);
+  }
+  catch(error){
+    console.log(error)
+  }
+})
+
+// PUT /api/students/:id
+router.put('/:id', async (req, res, next) => {
+  try {
+    const student = await Student.findByPk(req.params.id);
+    res.send(await student.update(req.body));
+  } catch (error) {
+    next(error);
+  }
+});
+
+
 module.exports = router;

@@ -5,21 +5,52 @@ import Student from "../students/Student";
 import { selectCampuses } from "../../features/campusesSlice";
 import { selectStudents } from "../../features/studentsSlice";
 import { fetchSingleCampus, selectSingleCampus } from "../../features/singleCampusSlice";
+import { editCampusAsync } from "../../features/campusesSlice";
 
 function CampusPage(){
     const dispatch = useDispatch();
-
+    
+    
     const {id} = useParams();
+    
+    const [form, setForm]=React.useState({
+        id:id,
+        name:"",
+        imgUrl:'',
+        address:"",
+        description:'',
+    });
+
+    const handleChange = prop=> event=>{
+        setForm({
+            ...form,
+            [prop]:event.target.value
+        })
+    }
+
     const campusId = Number(id)
     const campuses = useSelector(selectCampuses)
     const students = useSelector(selectStudents)
 
-    const singleCampus = useSelector(selectSingleCampus)
+    let singleCampus = useSelector(selectSingleCampus)
     const {name, description, address, imgUrl} = singleCampus.info
 
     useEffect(() => {
     dispatch(fetchSingleCampus(campusId));
-  }, [dispatch]);
+  }, [form]);
+
+    const handleSubmit = async (event)=>{
+        event.preventDefault();
+        await dispatch(editCampusAsync(form))
+        singleCampus = form;
+        setForm({
+            id:id,
+        name:"",
+        imgUrl:'',
+        address:"",
+        description:'',
+        })
+  }
 
     const attendingStudents =[];
 
@@ -40,7 +71,15 @@ function CampusPage(){
             {attendingStudents.map(student=>
             <Student key={student.id} data={student}/>)
             }
+            <h1>::EDIT CAMPUS::</h1>
             </div>
+            <form onSubmit={handleSubmit}>
+            <input type='text' value={form.name} onChange={handleChange("name")} placeholder={'Campus Name'}/><br/>
+            <input type='text' value={form.imgUrl} onChange={handleChange("imgUrl")} placeholder={'Image URL'}/><br/>
+            <input type='text' value={form.address} onChange={handleChange("address")} placeholder={'Address'}/><br/>
+            <input type='description' value={form.description} onChange={handleChange("description")} placeholder={'Description'}/><br/>
+            <input type='submit' value={'Submit'}/>
+            </form>
         </div>
     )
 }

@@ -12,7 +12,7 @@ const Form = ()=> {
   let students = useSelector(selectStudents)
   const campuses = useSelector(selectCampuses)
 
-  const [list, setList]=React.useState(students)
+  const [list, setList]=React.useState([])
   const [form, setForm]=React.useState({
         id:"",
         fname:"",
@@ -28,6 +28,10 @@ const Form = ()=> {
           setList(students);
         }
         });
+
+      React.useEffect(()=>{
+        setList(students)
+        }, [form]);
 
     const handleChange = prop=> event=>{
         setForm({

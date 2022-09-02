@@ -33,6 +33,18 @@ router.get('/:campusId', async (req, res, next) => {
   }
 })
 
+// DELETE /api/campuses/:campusId
+router.delete("/:campusId", async (req, res, next)=>{
+  try{
+    const campus = await Campus.findByPk(req.params.campusId);
+    await campus.destroy();
+    res.send(campus);
+  }
+  catch(error){
+    console.log(error)
+  }
+})
+
 
 // GET /api/campuses/:campusId/students
 router.get('/:campusId/students', async (req, res, next) => {
@@ -49,5 +61,16 @@ router.get('/:campusId/students', async (req, res, next) => {
     next(error)
   }
 })
+
+// PUT /api/campuses/:id
+router.put('/:id', async (req, res, next) => {
+  try {
+    const campus = await Campus.findByPk(req.params.id);
+    res.send(await campus.update(req.body));
+  } catch (error) {
+    next(error);
+  }
+});
+
 
 module.exports = router
